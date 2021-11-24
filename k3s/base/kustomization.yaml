@@ -3,4 +3,5 @@ resources:
   - api-clusterRole.yaml
   - api-RoleBinding.yaml
   - api-sa.yaml
+  - services.yaml
   - button.yaml

@@ -13,7 +13,7 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: /button
+        path: /
         backend:
           service:
             name: button-service

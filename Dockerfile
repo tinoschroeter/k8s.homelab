@@ -5,9 +5,8 @@ RUN apt-get update && apt-get dist-upgrade -y \
 
 WORKDIR /app
 
-COPY button/package.json .
-COPY button/index.js .
+COPY button .
 
 RUN npm install --only=production
 
-CMD ["sleep", "10000"]
+CMD ["node", "index.js"]
