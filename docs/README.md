@@ -4,7 +4,7 @@
      alt="rain" width="800" height="488">
      
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-blue.svg)](https://github.com/kubernetes/kubernetes)
-[![k3s](https://img.shields.io/badge/run%20on%20-Raspberry%20Pi-red)](https://gist.github.com/tinoschroeter/fd4c254e93b2fd0c0b584bdcf756e95f)
+[![k3s](https://img.shields.io/badge/run%20on%20-Raspberry%20Pi-red)](https://github.com/tinoschroeter/k8s.homelab)
 
 
 [temp] [namespaces] [pods] [cpu] [ram] [tx] [rx] 
