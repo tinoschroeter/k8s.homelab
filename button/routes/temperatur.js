@@ -16,7 +16,7 @@ const temperatur = () => {
           style: "flat", // (Optional) One of: 'plastic', 'flat', 
                          // 'flat-square', 'for-the-badge' or 'social'
         });
-
+        res.setHeader('Content-Type', 'image/svg+xml');
         return res.send(svg);
       }
       res.json(err);
