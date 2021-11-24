@@ -6,7 +6,7 @@ const temperatur = () => {
   return (req, res) => {
     fs.readFile(temp, (err, data) => {
       if (!err) {
-        const result = (data / 1000) | 0;
+        const result = (data / 1000) || 0;
         const color = result > 77 ? "red" : "brightgreen"
         const svg = makeBadge({
           label: "CPU Temp ", // (Optional) Badge label
