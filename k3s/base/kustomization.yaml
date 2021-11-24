@@ -1,0 +1,6 @@
+namespace: homelab
+resources:
+  - api-clusterRole.yaml
+  - api-RoleBinding.yaml
+  - api-sa.yaml
+  - button.yaml

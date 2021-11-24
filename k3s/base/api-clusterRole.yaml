@@ -1,0 +1,38 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: homelab-cluster-role
+  namespace: homelab 
+rules:
+  - apiGroups:
+        - ""
+       # - apps
+       # - autoscaling
+       # - batch
+       # - extensions
+       # - policy
+       # - rbac.authorization.k8s.io
+       # - networking.k8s.io
+    resources:
+      - pods
+      - componentstatuses
+      #- configmaps
+      #- daemonsets
+      #- deployments
+      #- events
+      #- endpoints
+      #- horizontalpodautoscalers
+      - ingresses
+      #- jobs
+      #- limitranges
+      #- namespaces
+      - nodes
+      #- persistentvolumes
+      #- persistentvolumeclaims
+      #- resourcequotas
+      #- replicasets
+      #- replicationcontrollers
+      #- serviceaccounts
+      #- services
+    verbs: ["get", "list"]
+    #verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
