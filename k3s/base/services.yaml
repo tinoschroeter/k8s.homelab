@@ -11,3 +11,18 @@ spec:
     targetPort: 3000
   selector:
     app: button
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: www-service
+  name: www-service
+spec:
+  ports:
+  - port: 7779
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: www

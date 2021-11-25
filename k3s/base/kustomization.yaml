@@ -5,3 +5,4 @@ resources:
   - api-sa.yaml
   - services.yaml
   - button.yaml
+  - www.yaml

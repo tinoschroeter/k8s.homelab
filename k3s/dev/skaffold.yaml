@@ -1,10 +1,1 @@
-apiVersion: skaffold/v1
-kind: Config
-build:
-  artifacts:
-  - image: registry.tino.sh/homelab-button
-    context: ../../
-    docker:
-      target: button
-deploy:
-  kustomize: {}
+../base/skaffold.yaml

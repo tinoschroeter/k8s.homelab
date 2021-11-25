@@ -3,6 +3,8 @@ namespace: dev-homelab
 replicas:
 - name: button
   count: 1
+- name: www
+  count: 1
 
 bases:
   - config.yaml

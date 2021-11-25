@@ -13,12 +13,22 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: /
+        path: /button
         backend:
           service:
             name: button-service
             port: 
               number: 7777
+  - host: homelab.tino.sh
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: www-service
+            port: 
+              number: 7779
   tls:
   - hosts:
     - homelab.tino.sh

@@ -6,5 +6,9 @@ build:
     context: ../../
     docker:
       target: button
+  - image: registry.tino.sh/homelab-www
+    context: ../../
+    docker:
+      target: www
 deploy:
   kustomize: {}
