@@ -8,9 +8,10 @@
 [![temp](https://homelab.tino.sh/button/temp)](https://github.com/tinoschroeter/k8s.homelab)
 [![k3s](https://img.shields.io/badge/CPU%20-16-orange)](https://github.com/tinoschroeter/k8s.homelab)
 [![k3s](https://img.shields.io/badge/RAM%20-20GB-orange)](https://github.com/tinoschroeter/k8s.homelab)
+[![k3s](https://homelab.tino.sh/button/rx)](https://github.com/tinoschroeter/k8s.homelab)
+[![k3s](https://homelab.tino.sh/button/tx)](https://github.com/tinoschroeter/k8s.homelab)
 
-
-[namespaces] [pods] [tx] [rx] 
+[namespaces] [pods]
 
 ## parts
 

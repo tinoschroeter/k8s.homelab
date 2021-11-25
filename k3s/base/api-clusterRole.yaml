@@ -12,7 +12,7 @@ rules:
        # - extensions
        # - policy
        # - rbac.authorization.k8s.io
-       # - networking.k8s.io
+        - networking.k8s.io
     resources:
       - pods
       - componentstatuses
@@ -35,4 +35,3 @@ rules:
       #- serviceaccounts
       #- services
     verbs: ["get", "list"]
-    #verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]

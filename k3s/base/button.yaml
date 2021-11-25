@@ -18,8 +18,8 @@ spec:
       - name: button
         image: registry.tino.sh/homelab-button
         volumeMounts:
-          - mountPath: /sys/class/thermal/thermal_zone0
-            name: thermal
+          - mountPath: /sys
+            name: sys
         resources:
           requests:
             memory: "50Mi"
@@ -28,9 +28,9 @@ spec:
             memory: "100Mi"
             cpu: "100m"
       volumes:
-      - name: thermal
+      - name: sys
         hostPath:
-          path: /sys/class/thermal/thermal_zone0
+          path: /sys
           type: Directory
       nodeSelector:
         arch: arm64
