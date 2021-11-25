@@ -11,8 +11,8 @@
 [![rx](https://homelab.tino.sh/button/netrx)](https://github.com/tinoschroeter/k8s.homelab)
 [![tx](https://homelab.tino.sh/button/nettx)](https://github.com/tinoschroeter/k8s.homelab)
 [![pods](https://homelab.tino.sh/button/pods)](https://github.com/tinoschroeter/k8s.homelab)
+[![namespaces](https://homelab.tino.sh/button/ns)](https://github.com/tinoschroeter/k8s.homelab)
 
-[namespaces] [pods]
 
 ## parts
 

@@ -8,13 +8,11 @@ const k8sApi = kc.makeApiClient(k8s.CoreV1Api);
 const namespaces = () => {
   return (req, res) => {
     k8sApi.listNamespace().then((obj) => {
-      const howManyPods = obj.body.items.filter(
-        (item) => item.status.phase === "Running"
-      ).length;
-      console.log("Namespaces: ", howManyPods);
+      const howManyNamespaces = obj.body.items.length;
+      console.log("Namespaces: ", howManyNamespaces);
       const svg = makeBadge({
-        label: " Namespaces ", // (Optional) Badge label
-        message: howManyPods.toString(), // (Required) Badge message
+        label: " ns ", // (Optional) Badge label
+        message: howManyNamespaces.toString(), // (Required) Badge message
         labelColor: "#555", // (Optional) Label color
         color: "ligthgreen", // (Optional) Message color
         style: "flat", // (Optional) One of: 'plastic', 'flat',

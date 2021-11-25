@@ -25,10 +25,10 @@ rules:
       - ingresses
       #- jobs
       #- limitranges
-      #- namespaces
+      - namespaces
       - nodes
       #- persistentvolumes
-      #- persistentvolumeclaims
+      - persistentvolumeclaims
       #- resourcequotas
       #- replicasets
       #- replicationcontrollers
