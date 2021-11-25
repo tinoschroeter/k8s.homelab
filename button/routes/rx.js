@@ -6,7 +6,7 @@ const rx = () => {
   return (req, res) => {
     fs.readFile(value, (err, data) => {
       if (!err) {
-        const result = data / Math.pow(10, 9).toFixed(2);
+        const result = (data / Math.pow(10, 9)).toFixed(2);
         const svg = makeBadge({
           label: ` RX `, // (Optional) Badge label
           message: ` ${result.toString()} GB`, // (Required) Badge message
