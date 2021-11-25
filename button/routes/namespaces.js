@@ -5,15 +5,15 @@ kc.loadFromDefault();
 
 const k8sApi = kc.makeApiClient(k8s.CoreV1Api);
 
-const pods = () => {
+const namespaces = () => {
   return (req, res) => {
-    k8sApi.listPodForAllNamespaces().then((obj) => {
+    k8sApi.listNamespace().then((obj) => {
       const howManyPods = obj.body.items.filter(
         (item) => item.status.phase === "Running"
       ).length;
-      console.log("Pods count: ", howManyPods);
+      console.log("Namespaces: ", howManyPods);
       const svg = makeBadge({
-        label: " Pods ", // (Optional) Badge label
+        label: " Namespaces ", // (Optional) Badge label
         message: howManyPods.toString(), // (Required) Badge message
         labelColor: "#555", // (Optional) Label color
         color: "ligthgreen", // (Optional) Message color
@@ -26,4 +26,4 @@ const pods = () => {
   };
 };
 
-module.exports = pods;
+module.exports = namespaces;
