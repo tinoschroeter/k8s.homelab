@@ -18,6 +18,9 @@ spec:
       containers:
       - name: button
         image: registry.tino.sh/homelab-button
+        envFrom:
+        - configMapRef:
+            name: homelab-config
         volumeMounts:
           - mountPath: /sys
             name: sys

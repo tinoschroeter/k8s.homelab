@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  name: homelab-ingress
+  namespace: dev-homelab
+spec:
+  rules:
+  - host: dev.homelab.tino.sh
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: button-service
+            port: 
+              number: 7777
+  tls:
+  - hosts:
+    - dev.homelab.tino.sh
+    secretName: dev-homelab-tino-sh-tls

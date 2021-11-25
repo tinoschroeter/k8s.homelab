@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homelab-config
+data:
+  MEMCACHIER_SERVERS: "mycache-memcached.memcached.svc.cluster.local"
+  CACHE_MAX_AGE: "3600"

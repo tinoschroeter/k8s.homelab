@@ -8,10 +8,18 @@ const k8sApi = kc.makeApiClient(k8s.CoreV1Api);
 const pods = () => {
   return (req, res) => {
     k8sApi.listPodForAllNamespaces().then((obj) => {
-      const howManyPods = obj.body.items.filter(
-        (item) => item.status.phase === "Running"
-      ).length;
-      console.log("Pods count: ", howManyPods);
+      let howManyPods = 0;
+      try {
+        howManyPods = obj.body.items.filter(
+          (item) => item.status.phase === "Running"
+        ).length;
+        console.log("Pods count: ", howManyPods);
+      } catch (err) {
+        console.error(err);
+      }
+
+      if (!howManyPods) howManyPods = "error";
+
       const svg = makeBadge({
         label: " Pods ", // (Optional) Badge label
         message: howManyPods.toString(), // (Required) Badge message

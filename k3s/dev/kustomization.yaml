@@ -1,0 +1,10 @@
+namespace: dev-homelab
+
+replicas:
+- name: button
+  count: 1
+
+bases:
+  - config.yaml
+  - ../base
+  - ingress.yaml

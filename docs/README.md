@@ -14,7 +14,7 @@
 [![namespaces](https://homelab.tino.sh/button/ns)](https://github.com/tinoschroeter/k8s.homelab)
 
 
-## parts
+## Parts
 
  * 4 x Raspberry Pi 4 (4 and 8GB)
  * 4 x SanDisk Extreme 64 GB microSDXC Memory Card
@@ -26,4 +26,22 @@
 
 ## 3D Print
 
-## Setup
+* [DIN Rail Stand KIT](https://www.thingiverse.com/thing:3609072)
+* [Raspberry Pi DIN Rail Mount](https://www.thingiverse.com/thing:2659908)
+
+## Kubernetes Setup
+
+
+```
+# master
+curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC=" --disable=traefik" sh -
+```
+
+```
+# agent
+
+```
+
+## Client Setup
+
+## NFS Server

@@ -8,8 +8,16 @@ const k8sApi = kc.makeApiClient(k8s.CoreV1Api);
 const namespaces = () => {
   return (req, res) => {
     k8sApi.listNamespace().then((obj) => {
-      const howManyNamespaces = obj.body.items.length;
-      console.log("Namespaces: ", howManyNamespaces);
+      let howManyNamespaces = 0;
+      try {
+        howManyNamespaces = obj.body.items.length;
+        console.log("Namespaces: ", howManyNamespaces);
+      } catch (err) {
+        console.error(err);
+      }
+
+      if (!howManyNamespaces) howManyNamespaces = "error";
+
       const svg = makeBadge({
         label: " ns ", // (Optional) Badge label
         message: howManyNamespaces.toString(), // (Required) Badge message
