@@ -5,11 +5,11 @@
      
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-blue.svg)](https://github.com/kubernetes/kubernetes)
 [![k3s](https://img.shields.io/badge/run%20on%20-Raspberry%20Pi-red)](https://github.com/tinoschroeter/k8s.homelab)
-[![temp](https://homelab.tino.sh/button/temp)](https://github.com/tinoschroeter/k8s.homelab)
+[![temp](https://homelab.tino.sh/button/tempe)](https://github.com/tinoschroeter/k8s.homelab)
 [![k3s](https://img.shields.io/badge/CPU%20-16-orange)](https://github.com/tinoschroeter/k8s.homelab)
 [![k3s](https://img.shields.io/badge/RAM%20-20GB-orange)](https://github.com/tinoschroeter/k8s.homelab)
-[![k3s](https://homelab.tino.sh/button/rx)](https://github.com/tinoschroeter/k8s.homelab)
-[![k3s](https://homelab.tino.sh/button/tx)](https://github.com/tinoschroeter/k8s.homelab)
+[![k3s](https://homelab.tino.sh/button/netrx)](https://github.com/tinoschroeter/k8s.homelab)
+[![k3s](https://homelab.tino.sh/button/nettx)](https://github.com/tinoschroeter/k8s.homelab)
 
 [namespaces] [pods]
 
