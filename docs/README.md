@@ -13,6 +13,19 @@
 [![pods](https://homelab.tino.sh/button/pods)](https://github.com/tinoschroeter/k8s.homelab)
 [![namespaces](https://homelab.tino.sh/button/ns)](https://github.com/tinoschroeter/k8s.homelab)
 
+<p align="left">
+    <a href="#Parts">Parts</a>
+    <a href="#3D-Print">3D Print</a>
+    <a href="#PI-Setup">PI Setup</a>
+    <a href="#Kubernetes-Setup">Kubernetes Setup</a>
+    <a href="#Client-Setup">Client Setup</a>
+    <a href="#ingress-(nginx)">ingress</a>
+    <a href="#Cet-Manager-(letsencrypt)">Cet-Manager</a>
+    <a href="#Docker-Registry">Docker Registry</a>
+    <a href="#NFS-Server">NFS Server</a>
+    <a href="#logs">logs</a>
+</p>
+
 
 ## Parts
 
@@ -75,7 +88,7 @@ helm install nginx-ingress-extern ingress-nginx/ingress-nginx --namespace kube-s
 --set controller.ingressClass=nginx --set prometheus.create=true
 ```
 
-## cetManager (letsencrypt)
+## Cet-Manager (letsencrypt)
 
 ```bash
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --set installCRDs=true
@@ -188,6 +201,22 @@ spec:
     secretName: registry-example-com-tls
 ```
 
+```
+# Every node in the cluster need this, to login to your docker registry
+
+cat /etc/rancher/k3s/registries.yaml
+
+mirrors:
+  registry.tino.sh:
+    endpoint:
+      - "https://registry.example.com"
+configs:
+  "registry.tino.sh":
+    auth:
+      username: user # this is the registry username
+      password: p@$$s0rd # this is the registry password
+```
+
 ## NFS Server
 
 ```bash
@@ -215,4 +244,10 @@ spec:
   resources:
     requests:
       storage: 1Gi
+```
+
+## logs 
+
+```bash
+# logs can be found in /var/log/containers on each host
 ```
