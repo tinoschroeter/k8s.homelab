@@ -13,18 +13,18 @@
 [![pods](https://homelab.tino.sh/button/pods)](https://github.com/tinoschroeter/k8s.homelab)
 [![namespaces](https://homelab.tino.sh/button/ns)](https://github.com/tinoschroeter/k8s.homelab)
 
-<ul align="left">
-   <li> <a href="#Parts">Parts</a></li> 
-   <li> <a href="#3D-Print">3D Print</a></li> 
-   <li> <a href="#PI-Setup">PI Setup</a></li> 
-   <li> <a href="#Kubernetes-Setup">Kubernetes Setup</a></li> 
-   <li> <a href="#Client-Setup">Client Setup</a></li> 
-   <li> <a href="#ingress-nginx">ingress</a></li> 
-   <li> <a href="#Cet-Manager-letsencrypt">Cet-Manager</a></li> 
-   <li> <a href="#Docker-Registry">Docker Registry</a></li> 
-   <li> <a href="#NFS-Server">NFS Server</a></li> 
-   <li> <a href="#logs">logs</a></li> 
-</ul>
+## Table of contents
+
+* [Parts](#Parts)
+* [3D Print](#3D-Print)
+* [PI Setup](#PI-Setup)
+* [Kubernetes Setup](#Kubernetes-Setup)
+* [Client Setup](#Client-Setup)
+* [ingress](#ingress-nginx)
+* [Cet-Manager](#Cet-Manager-letsencrypt)
+* [Docker Registry](#Docker-Registry)
+* [NFS Server](#NFS-Server)
+* [logs](#logs)
 
 ## Parts
 
