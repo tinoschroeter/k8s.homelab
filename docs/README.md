@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/tinoschroeter/k8s.homelab/master/docs/img/cluster01.jpg" align="center"
      alt="rain" width="800" height="488">
-     
+
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-blue.svg)](https://github.com/kubernetes/kubernetes)
 [![k3s](https://img.shields.io/badge/run%20on%20-Raspberry%20Pi-red)](https://github.com/tinoschroeter/k8s.homelab)
 [![temp](https://homelab.tino.sh/button/tempe)](https://github.com/tinoschroeter/k8s.homelab)
@@ -13,34 +13,33 @@
 [![pods](https://homelab.tino.sh/button/pods)](https://github.com/tinoschroeter/k8s.homelab)
 [![namespaces](https://homelab.tino.sh/button/ns)](https://github.com/tinoschroeter/k8s.homelab)
 
-<p align="left">
-    <a href="#Parts">Parts</a>
-    <a href="#3D-Print">3D Print</a>
-    <a href="#PI-Setup">PI Setup</a>
-    <a href="#Kubernetes-Setup">Kubernetes Setup</a>
-    <a href="#Client-Setup">Client Setup</a>
-    <a href="#ingress-(nginx)">ingress</a>
-    <a href="#Cet-Manager-(letsencrypt)">Cet-Manager</a>
-    <a href="#Docker-Registry">Docker Registry</a>
-    <a href="#NFS-Server">NFS Server</a>
-    <a href="#logs">logs</a>
-</p>
-
+<ul align="left">
+   <li> <a href="#Parts">Parts</a></li> 
+   <li> <a href="#3D-Print">3D Print</a></li> 
+   <li> <a href="#PI-Setup">PI Setup</a></li> 
+   <li> <a href="#Kubernetes-Setup">Kubernetes Setup</a></li> 
+   <li> <a href="#Client-Setup">Client Setup</a></li> 
+   <li> <a href="#ingress-nginx">ingress</a></li> 
+   <li> <a href="#Cet-Manager-letsencrypt">Cet-Manager</a></li> 
+   <li> <a href="#Docker-Registry">Docker Registry</a></li> 
+   <li> <a href="#NFS-Server">NFS Server</a></li> 
+   <li> <a href="#logs">logs</a></li> 
+</ul>
 
 ## Parts
 
- * 4 x Raspberry Pi 4 (4 and 8GB)
- * 4 x SanDisk Extreme 64 GB microSDXC Memory Card
- * 3 x SanDisk Ultra Fit USB 3.1 Flash-Laufwerk 256 GB
- * 4 x GeeekPi Raspberry Pi 4 Luefter Kit, Aluminium Kuehlkoerper mit Luefter
- * 4 x DeLock USB-Kabel - USB-C (M) bis 2 pin USB Header
- * 1 x Hutschienen Netzteil 50W 5V 10A ; MeanWell, MDR-60-12
- * 1 x Hutschiene / DIN-Schiene 30cm
+- 4 x Raspberry Pi 4 (4 and 8GB)
+- 4 x SanDisk Extreme 64 GB microSDXC Memory Card
+- 3 x SanDisk Ultra Fit USB 3.1 Flash-Laufwerk 256 GB
+- 4 x GeeekPi Raspberry Pi 4 Luefter Kit, Aluminium Kuehlkoerper mit Luefter
+- 4 x DeLock USB-Kabel - USB-C (M) bis 2 pin USB Header
+- 1 x Hutschienen Netzteil 50W 5V 10A ; MeanWell, MDR-60-12
+- 1 x Hutschiene / DIN-Schiene 30cm
 
 ## 3D Print
 
-* [DIN Rail Stand KIT](https://www.thingiverse.com/thing:3609072)
-* [Raspberry Pi DIN Rail Mount](https://www.thingiverse.com/thing:2659908)
+- [DIN Rail Stand KIT](https://www.thingiverse.com/thing:3609072)
+- [Raspberry Pi DIN Rail Mount](https://www.thingiverse.com/thing:2659908)
 
 ## PI Setup
 
@@ -81,6 +80,7 @@ scp ubuntu@10.0.1.100:/etc/rancher/k3s/k3s.yaml ~/.kube/config
 sed -i 's/127.0.0.1/10.0.1.100/' ~/.kube/config
 
 ```
+
 ## ingress (nginx)
 
 ```bash
@@ -95,7 +95,7 @@ helm install cert-manager jetstack/cert-manager --namespace cert-manager --set i
 ```
 
 ```bash
-cat letsencrypt-prod.yaml 
+cat letsencrypt-prod.yaml
 
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -145,7 +145,7 @@ persistence:
 storage: filesystem
 
 secrets:
-  htpasswd: "" # docker run --entrypoint htpasswd registry:2 -Bbn user password > ./htpasswd 
+  htpasswd: "" # docker run --entrypoint htpasswd registry:2 -Bbn user password > ./htpasswd
 
 configData:
   version: 0.1
@@ -246,7 +246,7 @@ spec:
       storage: 1Gi
 ```
 
-## logs 
+## logs
 
 ```bash
 # logs can be found in /var/log/containers on each host
