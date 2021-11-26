@@ -13,6 +13,8 @@
 [![pods](https://homelab.tino.sh/button/pods)](https://github.com/tinoschroeter/k8s.homelab)
 [![namespaces](https://homelab.tino.sh/button/ns)](https://github.com/tinoschroeter/k8s.homelab)
 
+[![Build Status](https://jenkins.tino.sh/buildStatus/icon?job=k8s.homelab%2Fmaster)](https://jenkins.tino.sh/job/k8s./job/master/)
+
 ## Table of contents
 
 * [Parts](#Parts)
