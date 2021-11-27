@@ -14,6 +14,8 @@
 [![namespaces](https://homelab.tino.sh/button/ns)](https://github.com/tinoschroeter/k8s.homelab)
 
 [![Build Status](https://jenkins.tino.sh/buildStatus/icon?job=k8s.homelab%2Fmaster)](https://jenkins.tino.sh/job/k8s./job/master/)
+[![GitHub Super-Linter](https://github.com/tinoschroeter/k8s.homelab/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 
 ## Table of contents
 
