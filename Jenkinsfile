@@ -8,8 +8,15 @@ pipeline {
           }
       }
       stage('Build Dev') {
-        when {
-          branch 'dev'
+        when { branch 'dev' }
+        when { 
+          anyOf {
+            changeset "button/**"
+            changeset "button/**"
+            changeset "www/**"
+            changeset "k3s/base/**"
+            changeset "k3s/dev/**"
+          }
         }
         steps {
             echo 'Build Dev..'
@@ -17,13 +24,20 @@ pipeline {
         }   
       }
       stage('Build Production') {
-        when {
-          branch 'master'
+        when { branch 'master' }
+        when { 
+          anyOf {
+            changeset "button/**"
+            changeset "button/**"
+            changeset "www/**"
+            changeset "k3s/base/**"
+            changeset "k3s/production/**"
+          }
         }
         steps {
             echo 'Build Production....'
             sh("cd k3s/production/ && skaffold run")
         }  
-    }
+     }
   }
 }
