@@ -37,7 +37,13 @@ pipeline {
         steps {
             echo 'Build Production....'
             sh("cd k3s/production/ && skaffold run")
-        }  
-     }
-  }
+          }  
+        }
+      stage('Build Docs') {
+        when { changeset "docs/**" }
+        steps {
+            echo 'Build Docs...'
+          }  
+        }
+    }
 }
