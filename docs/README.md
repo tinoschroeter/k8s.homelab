@@ -47,7 +47,7 @@
 
 ## PI Setup
 
-```bash
+```shell
 add cgroup_enable=memory to /boot/cmdline.txt
 
 # configure timezone
@@ -57,7 +57,7 @@ apt-get install ntp
 
 ## Kubernetes Setup
 
-```bash
+```shell
 # master
 curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" \
 INSTALL_K3S_EXEC=" --disable=traefik" sh -
@@ -69,14 +69,14 @@ cat /var/lib/rancher/k3s/server/node-token
 cat /etc/rancher/k3s/k3s.yaml
 ```
 
-```bash
+```shell
 # agent
 k3s agent --server https://<ip master>:6443 --token ${mynodetoken}
 ```
 
 ## Client Setup
 
-```bash
+```shell
 # copy client config from master
 scp ubuntu@10.0.1.100:/etc/rancher/k3s/k3s.yaml ~/.kube/config
 
@@ -87,18 +87,18 @@ sed -i 's/127.0.0.1/10.0.1.100/' ~/.kube/config
 
 ## ingress (nginx)
 
-```bash
+```shell
 helm install nginx-ingress-extern ingress-nginx/ingress-nginx --namespace kube-system \
 --set controller.ingressClass=nginx --set prometheus.create=true
 ```
 
 ## Cet-Manager (letsencrypt)
 
-```bash
+```shell
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --set installCRDs=true
 ```
 
-```bash
+```shell
 cat letsencrypt-prod.yaml
 
 apiVersion: cert-manager.io/v1
@@ -122,7 +122,7 @@ kubectl apply -f letsencrypt-prod.yaml
 
 ## Docker Registry
 
-```bash
+```shell
 kubectl create ns docker-registry
 helm install docker-registry twuni/docker-registry -f values.yaml --namespace docker-registry
 
@@ -205,7 +205,7 @@ spec:
     secretName: registry-example-com-tls
 ```
 
-```
+```shell
 # Every node in the cluster need this, to login to your docker registry
 
 cat /etc/rancher/k3s/registries.yaml
@@ -223,7 +223,7 @@ configs:
 
 ## NFS Server
 
-```bash
+```shell
 # install NFS on 10.0.1.100 first and export /mnt/data
 apt install nfs-kernel-server
 cat /etc/exports
@@ -252,6 +252,6 @@ spec:
 
 ## logs
 
-```bash
+```shell
 # logs can be found in /var/log/containers on each host
 ```
