@@ -8,9 +8,9 @@ pipeline {
           }
       }
       stage('Build Dev') {
-        when { branch 'dev' }
         when { 
           anyOf {
+            branch 'dev'
             changeset "button/**"
             changeset "button/**"
             changeset "www/**"
@@ -24,9 +24,9 @@ pipeline {
         }   
       }
       stage('Build Production') {
-        when { branch 'master' }
         when { 
           anyOf {
+            branch 'master'
             changeset "button/**"
             changeset "button/**"
             changeset "www/**"
