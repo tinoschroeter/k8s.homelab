@@ -7,28 +7,28 @@ const k8sApi = kc.makeApiClient(k8s.CoreV1Api);
 
 const namespaces = () => {
   return (req, res) => {
-    k8sApi.listNamespace().then((obj) => {
-      let howManyNamespaces = 0;
-      try {
+    try {
+      k8sApi.listNamespace().then((obj) => {
+        let howManyNamespaces = 0;
         howManyNamespaces = obj.body.items.length;
         console.log("Namespaces: ", howManyNamespaces);
-      } catch (err) {
-        console.error(err);
-      }
 
-      if (!howManyNamespaces) howManyNamespaces = "error";
+        if (!howManyNamespaces) howManyNamespaces = "error";
 
-      const svg = makeBadge({
-        label: " ns ", // (Optional) Badge label
-        message: howManyNamespaces.toString(), // (Required) Badge message
-        labelColor: "#555", // (Optional) Label color
-        color: "ligthgreen", // (Optional) Message color
-        style: "flat", // (Optional) One of: 'plastic', 'flat',
-        // 'flat-square', 'for-the-badge' or 'social'
+        const svg = makeBadge({
+          label: " ns ", // (Optional) Badge label
+          message: howManyNamespaces.toString(), // (Required) Badge message
+          labelColor: "#555", // (Optional) Label color
+          color: "ligthgreen", // (Optional) Message color
+          style: "flat", // (Optional) One of: 'plastic', 'flat',
+          // 'flat-square', 'for-the-badge' or 'social'
+        });
+        res.setHeader("Content-Type", "image/svg+xml");
+        return res.send(svg);
       });
-      res.setHeader("Content-Type", "image/svg+xml");
-      return res.send(svg);
-    });
+    } catch (err) {
+      res.send("error");
+    }
   };
 };
 
