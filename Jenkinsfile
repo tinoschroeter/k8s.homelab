@@ -46,4 +46,12 @@ pipeline {
           }  
         }
     }
+    post {
+       success {
+           echo "slackSed success..."
+       }
+       failure {
+           echo "slackSend success..."
+       }
+    }
 }

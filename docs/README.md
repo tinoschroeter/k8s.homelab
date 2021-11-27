@@ -1,7 +1,7 @@
 # Pi-Cluster
 
-<img src="https://raw.githubusercontent.com/tinoschroeter/k8s.homelab/master/docs/img/cluster01.jpg" align="center"
-     alt="rain" width="800" height="488">
+![pi cluster](https://raw.githubusercontent.com/tinoschroeter/k8s.homelab/master/docs/img/cluster01.jpg)
+
 
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-blue.svg)](https://github.com/kubernetes/kubernetes)
 [![k3s](https://img.shields.io/badge/run%20on%20-Raspberry%20Pi-red)](https://github.com/tinoschroeter/k8s.homelab)
@@ -14,7 +14,7 @@
 [![namespaces](https://homelab.tino.sh/button/ns)](https://github.com/tinoschroeter/k8s.homelab)
 
 [![Build Status](https://jenkins.tino.sh/buildStatus/icon?job=k8s.homelab%2Fmaster)](https://jenkins.tino.sh/job/k8s./job/master/)
-[![GitHub Super-Linter](https://github.com/tinoschroeter/k8s.homelab/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![GitHub Super-Linter](https://github.com/tinoschroeter/k8s.homelab/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/tinoschroeter/k8s.homelab/actions/workflows/linter.yml)
 
 
 ## Table of contents
