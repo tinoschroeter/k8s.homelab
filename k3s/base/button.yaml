@@ -38,8 +38,7 @@ spec:
           type: Directory
       tolerations:
       - key: "node-role.kubernetes.io"
-        operator: "Equal"
-        value: "master"
+        operator: "Exists"
         effect: "NoSchedule"
       nodeSelector:
         arch: arm64
