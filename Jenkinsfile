@@ -49,11 +49,11 @@ pipeline {
       post {
         success {
            echo "Build successfully..."
-           slackSend color: "good", message: "Build successfully..."
+           slackSend color: "good", message: "Build successfully on $JOB_NAME..."
        }
        failure {
            echo "Build failed..."
-           slackSend color: "danger", message: "Build failed..."
+           slackSend color: "danger", message: "Build failed on $JOB_NAME..."
        }
     }
 }
