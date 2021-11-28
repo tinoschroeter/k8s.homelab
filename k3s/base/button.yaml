@@ -38,6 +38,7 @@ spec:
           type: Directory
       tolerations:
       - key: "node-role.kubernetes.io"
+        operator: "Equal"
         value: "master"
         effect: "NoSchedule"
       nodeSelector:
