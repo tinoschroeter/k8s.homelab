@@ -1,15 +1,15 @@
 const fs = require("fs");
-const temp = "/sys/class/thermal/thermal_zone0/temp";
+const temp = "/proc/uptime";
 const { makeBadge, ValidationError } = require("badge-maker");
 
-const temperatur = () => {
+const uptime = () => {
   return (req, res) => {
     fs.readFile(temp, (err, data) => {
       if (!err) {
-        const result = (data / 1000).toFixed(1);
-        const color = result > 77 ? "red" : "brightgreen"
+        const result = Math.floor(data / 60 / 60 / 24);
+        const color = result > 182 ? "red" : "brightgreen"
         const svg = makeBadge({
-          label: "CPU Temp ", // (Optional) Badge label
+          label: "Uptime ", // (Optional) Badge label
           message: ` ${result.toString()} C`, // (Required) Badge message
           labelColor: "#555", // (Optional) Label color
           color, // (Optional) Message color
@@ -24,4 +24,4 @@ const temperatur = () => {
   };
 };
 
-module.exports = temperatur;
+module.exports = uptime;
