@@ -1,6 +1,5 @@
 pipeline {
   agent any
-
   stages {
       stage('Linting') {
           steps {
@@ -45,5 +44,15 @@ pipeline {
             echo 'Build Docs...'
           }  
         }
+      }
+      post {
+        success {
+           echo "Build successfully..."
+           slackSend color: "good", message: "Build successfully..."
+       }
+       failure {
+           echo "Build failed..."
+           slackSend color: "danger", message: "Build failed..."
+       }
     }
 }
