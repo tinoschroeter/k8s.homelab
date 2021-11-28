@@ -36,10 +36,10 @@ spec:
         hostPath:
           path: /sys
           type: Directory
-      tolerations:
-      - key: "node-role.kubernetes.io"
-        operator: "Exists"
-        effect: "NoSchedule"
       nodeSelector:
-        arch: arm64
-        hostname: main-node01
+        host: master
+      tolerations:
+      - key: "kubernetes"
+        operator: "Equal"
+        value: "master"
+        effect: "NoSchedule"
