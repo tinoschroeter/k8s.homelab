@@ -10,7 +10,7 @@ const uptime = () => {
         const color = result > 182 ? "red" : "brightgreen"
         const svg = makeBadge({
           label: "Uptime ", // (Optional) Badge label
-          message: result.toString(), // (Required) Badge message
+          message: `${result.toString()} day's`, // (Required) Badge message
           labelColor: "#555", // (Optional) Label color
           color, // (Optional) Message color
           style: "flat", // (Optional) One of: 'plastic', 'flat', 
