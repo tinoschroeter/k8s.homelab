@@ -56,12 +56,4 @@ pipeline {
            slackSend color: "danger", message: "Build failed on $JOB_NAME..."
        }
     }
-    post {
-       success {
-           echo "slackSed success..."
-       }
-       failure {
-           echo "slackSend success..."
-       }
-    }
 }
