@@ -7,7 +7,7 @@ const tx = require("./routes/tx.js");
 const rx = require("./routes/rx.js");
 const pods = require("./routes/pods.js");
 const namespaces = require("./routes/namespaces.js");
-const uptime = require("./routes/uptime.js);
+const uptime = require("./routes/uptime.js");
 
 const app = express();
 app.use(nocache());
