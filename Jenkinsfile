@@ -4,6 +4,7 @@ pipeline {
       stage('Linting') {
           steps {
           echo 'linting..'
+          sh 'printenv'
           }
       }
       stage('Build Dev') {
