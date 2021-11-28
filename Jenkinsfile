@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  options {
+      timeout(time: 14, unit: 'MINUTES')
+  }
   stages {
       stage('Linting') {
           steps {
