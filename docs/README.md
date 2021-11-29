@@ -84,6 +84,8 @@ scp ubuntu@10.0.1.100:/etc/rancher/k3s/k3s.yaml ~/.kube/config
 # replace master ip address
 sed -i 's/127.0.0.1/10.0.1.100/' ~/.kube/config
 
+# no pods on master node
+kubectl taint node main-node01 kubernetes=master:NoSchedule
 ```
 
 ## ingress (nginx)
