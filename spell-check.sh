@@ -11,6 +11,6 @@ if [ -z "$1" ]; then
 fi
 
 for f in **/*.md; do
-	aspell --home-dir=. check -d $1 $f
+	aspell --home-dir=. check -d "$1" "$f"
 done
 
