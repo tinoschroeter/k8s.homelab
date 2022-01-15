@@ -23,15 +23,15 @@
 
 ## Table of contents
 
-* [Parts](#Parts)
-* [3D Print](#3D-Print)
-* [PI Setup](#PI-Setup)
-* [Kubernetes Setup](#Kubernetes-Setup)
-* [Client Setup](#Client-Setup)
+* [Parts](#parts)
+* [3D Print](#3d-print)
+* [PI Setup](#pi-setup)
+* [Kubernetes Setup](#kubernetes-setup)
+* [Client Setup](#client-setup)
 * [ingress](#ingress-nginx)
-* [Cet-Manager](#Cet-Manager-letsencrypt)
-* [Docker Registry](#Docker-Registry)
-* [NFS Server](#NFS-Server)
+* [Cet-Manager](#cet-manager-letsencrypt)
+* [Docker Registry](#docker-registry)
+* [NFS Server](#nfs-server)
 * [logs](#logs)
 
 ## Parts
