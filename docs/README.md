@@ -75,7 +75,8 @@ cat /etc/rancher/k3s/k3s.yaml
 
 ```shell
 # agent
-k3s agent --server https://<ip master>:6443 --token ${mynodetoken}
+curl -sfL https://get.k3s.io | K3S_URL=https://10.0.1.100:6443 K3S_TOKEN=<token> sh -
+
 ```
 
 ## Client Setup
