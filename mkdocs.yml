@@ -1,0 +1,15 @@
+site_name: 'Home Lab Documentation'
+site_url: 'https://homelab.tino.sh/'
+repo_url: 'https://github.com'
+edit_uri: '/tinoschroeter/k8s.homelab/edit/master/docs/'
+
+nav:
+  - 'Projects':
+    - 'foo': '/foo'
+    - 'bar': '/bar'
+
+theme: 'readthedocs'
+copyright: 'Tino Schroeter'
+plugins:
+    - search
+    - kroki

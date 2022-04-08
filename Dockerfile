@@ -11,10 +11,23 @@ RUN npm install --only=production
 
 CMD ["node", "index.js"]
 
-FROM nginx:1.20.2 AS www
-RUN apt-get update && apt-get dist-upgrade -y && \
-apt-get install pandoc wget -y
+FROM python:3.9.12 AS builder
+WORKDIR /app
 
-WORKDIR /usr/share/nginx/html/
-COPY www .
-RUN sh build.sh
+RUN pip install mkDocs
+RUN pip install mkdocs-kroki-plugin
+
+COPY mkdocs.yml .
+COPY docs docs
+
+RUN mkdocs build
+
+
+FROM nginx:1.20.2 AS www
+
+WORKDIR /usr/share/nginx/html
+
+COPY mkdocs.yml .
+COPY docs .
+
+COPY --from=builder /app/site .

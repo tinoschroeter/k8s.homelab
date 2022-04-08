@@ -44,6 +44,17 @@
 - 1 x Hutschienen Netzteil 50W 5V 10A ; MeanWell, MDR-60-12
 - 1 x Hutschiene / DIN-Schiene 30cm
 
+```kroki-graphviz
+digraph Beziehungen {
+  nodesep=0.7
+  Jutta -> markdown         [label="liebt"]
+  Franz -> markdown         [label="hasst"]
+  Franz -> reStructuredText [label="liebt"]
+  Bernd -> markdown         [label="liebt"]
+  Jutta -> Franz            [label="liebt"]
+}
+```
+
 ## 3D Print
 
 - [DIN Rail Stand KIT](https://www.thingiverse.com/thing:3609072)
