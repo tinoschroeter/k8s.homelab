@@ -54,6 +54,16 @@ digraph Beziehungen {
   Jutta -> Franz            [label="liebt"]
 }
 ```
+```mermaid
+graph TD;
+    K[Kubectl] ---> M(main-node01);
+    W01(worker-node01) ---> M;
+    M --> W01;
+    W02(worker-node02) ---> M;
+    M --> W02;
+    W03(worker-node03) ---> M;
+    M --> W03;
+```
 
 ## 3D Print
 
