@@ -44,6 +44,27 @@
 - 1 x Hutschienen Netzteil 50W 5V 10A ; MeanWell, MDR-60-12
 - 1 x Hutschiene / DIN-Schiene 30cm
 
+```kroki-graphviz
+digraph Beziehungen {
+  nodesep=0.7
+  Jutta -> markdown         [label="liebt"]
+  Franz -> markdown         [label="hasst"]
+  Franz -> reStructuredText [label="liebt"]
+  Bernd -> markdown         [label="liebt"]
+  Jutta -> Franz            [label="liebt"]
+}
+```
+```mermaid
+graph TD;
+    K[Kubectl] ---> M(main-node01);
+    W01(worker-node01) ---> M;
+    M --> W01;
+    W02(worker-node02) ---> M;
+    M --> W02;
+    W03(worker-node03) ---> M;
+    M --> W03;
+```
+
 ## 3D Print
 
 - [DIN Rail Stand KIT](https://www.thingiverse.com/thing:3609072)
@@ -75,7 +96,8 @@ cat /etc/rancher/k3s/k3s.yaml
 
 ```shell
 # agent
-k3s agent --server https://<ip master>:6443 --token ${mynodetoken}
+curl -sfL https://get.k3s.io | K3S_URL=https://10.0.1.100:6443 K3S_TOKEN=<token> sh -
+
 ```
 
 ## Client Setup
@@ -94,13 +116,16 @@ kubectl taint node main-node01 kubernetes=master:NoSchedule
 ## ingress (nginx)
 
 ```shell
-helm install nginx-ingress-extern ingress-nginx/ingress-nginx --namespace kube-system \
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm install nginx-ingress ingress-nginx/ingress-nginx --namespace kube-system \
 --set controller.ingressClass=nginx --set prometheus.create=true
 ```
 
 ## Cet-Manager (letsencrypt)
 
 ```shell
+kubectl create ns cert-manager
+helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --set installCRDs=true
 ```
 
@@ -123,13 +148,45 @@ spec:
         ingress:
           class: nginx
 
-kubectl apply -f letsencrypt-prod.yaml
+kubectl apply -n cert-manager -f letsencrypt-prod.yaml
+```
+
+## NFS Server
+
+```shell
+# install NFS on 10.0.1.100 first and export /mnt/data
+apt install nfs-kernel-server
+cat /etc/exports
+/mnt/data  10.0.1.0/24(rw,sync,no_subtree_check)
+exportfs
+
+kubectl create ns nfs-subdir-external-provisioner
+helm install nfs-subdir-external-provisioner --namespace nfs-subdir-external-provisioner --create-namespace \
+nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
+--set nfs.server=10.0.1.100 --set nfs.path=/mnt/data
+
+cat pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: nfs-subdir-external-provisioner
+  name: example-pvc-data
+spec:
+  accessModes:
+    - ReadWriteMany
+  # - ReadWriteOnce
+  storageClassName: nfs-client
+  #storageClassName: local-path
+  resources:
+    requests:
+      storage: 1Gi
 ```
 
 ## Docker Registry
 
 ```shell
 kubectl create ns docker-registry
+helm repo add twuni https://helm.twun.io
 helm install docker-registry twuni/docker-registry -f values.yaml --namespace docker-registry
 
 cat values.yaml
@@ -227,34 +284,6 @@ configs:
       password: p@$$s0rd # this is the registry password
 ```
 
-## NFS Server
-
-```shell
-# install NFS on 10.0.1.100 first and export /mnt/data
-apt install nfs-kernel-server
-cat /etc/exports
-/mnt/data  10.0.1.0/24(rw,sync,no_subtree_check)
-
-helm install nfs-subdir-external-provisioner --namespace nfs-subdir-external-provisioner --create-namespace \
-nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
---set nfs.server=10.0.1.100 --set nfs.path=/mnt/data
-
-cat pvc.yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  namespace: nfs-subdir-external-provisioner
-  name: example-pvc-data
-spec:
-  accessModes:
-    - ReadWriteMany
-  # - ReadWriteOnce
-  storageClassName: nfs-client
-  #storageClassName: local-path
-  resources:
-    requests:
-      storage: 1Gi
-```
 
 ## logs
 

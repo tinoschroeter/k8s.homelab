@@ -43,9 +43,7 @@ spec:
           path: /proc
           type: Directory
       nodeSelector:
-        host: master
+        hostname: main
       tolerations:
       - key: "kubernetes"
-        operator: "Equal"
-        value: "master"
         effect: "NoSchedule"
