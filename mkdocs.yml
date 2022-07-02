@@ -12,4 +12,4 @@ theme: 'readthedocs'
 copyright: 'Tino Schroeter'
 plugins:
     - search
-    - kroki
+    - mermaid2
