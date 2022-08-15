@@ -19,9 +19,6 @@ spec:
             name: button-service
             port: 
               number: 7777
-  - host: homelab.tino.sh
-    http:
-      paths:
       - pathType: Prefix
         path: /
         backend:
