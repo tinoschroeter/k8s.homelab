@@ -5,4 +5,4 @@ metadata:
   name: homelab-config
 data:
   MEMCACHIER_SERVERS: "mycache-memcached.memcached.svc.cluster.local"
-  CACHE_MAX_AGE: "600"
+  CACHE_MAX_AGE: "6000"
