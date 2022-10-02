@@ -33,6 +33,7 @@
 * [Docker Registry](#docker-registry)
 * [NFS Server](#nfs-server)
 * [logs](#logs)
+* [delete old images on worker node](#delete-old-images-on-worker-node)
 
 ## Parts
 
@@ -279,6 +280,12 @@ configs:
 
 ```shell
 # logs can be found in /var/log/containers on each host
+```
+
+## delete old images on worker node
+
+```shell
+k3s crictl rmi --prune
 ```
 
 [UP^](#pi-cluster)
