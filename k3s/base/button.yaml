@@ -29,10 +29,10 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "100m"
+            cpu: "1100m"
           limits:
             memory: "100Mi"
-            cpu: "300m"
+            cpu: "1200m"
       volumes:
       - name: sys
         hostPath:
