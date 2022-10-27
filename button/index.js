@@ -15,6 +15,18 @@ const app = express();
 app.use(nocache());
 app.use(morgan("combined"));
 
+const promBundle = require("express-prom-bundle");
+app.use(
+  "/",
+  promBundle({
+    includePath: true,
+    includeMethod: true,
+    promClient: {
+      collectDefaultMetrics: {},
+    },
+  })
+);
+
 const cacheMaxAge = process.env.CACHE_MAX_AGE || 120;
 app.use(cache({ cacheMaxAge }));
 
