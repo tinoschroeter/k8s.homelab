@@ -1,15 +1,58 @@
-site_name: 'Home Lab Documentation'
-site_url: 'https://homelab.tino.sh/'
-repo_url: 'https://github.com'
-edit_uri: '/tinoschroeter/k8s.homelab/edit/master/docs/'
+site_name: "Home Lab Documentation"
+site_description: Project documentation with Markdown.
+site_url: "https://homelab.tino.sh/"
+repo_url: "https://github.com/tinoschroeter/k8s.homelab"
+edit_uri: "/tinoschroeter/k8s.homelab/edit/master/docs/"
 
 nav:
-  - 'Projects':
-    - 'foo': '/foo'
-    - 'bar': '/bar'
+  - Home: README.md
 
-theme: 'readthedocs'
-copyright: 'Tino Schroeter'
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: eventim
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.path
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.sugge
+  locale: en
+  icon:
+    logo: 'material/cloud-outline'
+  favicon: 'img/logo.svg'
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+extra_javascript:
+  - extra.js  
+extra_css:
+  - extra.css
+
+markdown_extensions:
+  - toc:
+      permalink:
+  - attr_list
+  - def_list
+  - tables
+  - pymdownx.snippets
+  - mdx_gh_links:
+      user: mkdocs
+      repo: mkdocs
+  - mkdocs-click
+
+copyright: "Tino Schroeter"
 plugins:
-    - search
-    - mermaid2
+  - search
+  - mermaid2
+  - macros

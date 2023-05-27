@@ -16,34 +16,20 @@
 [![pods](https://homelab.tino.sh/button/pods)](https://github.com/tinoschroeter/k8s.homelab)
 [![namespaces](https://homelab.tino.sh/button/ns)](https://github.com/tinoschroeter/k8s.homelab)
 
-[![Build Status](https://jenkins.tino.sh/buildStatus/icon?job=k8s.homelab%2Fmaster)](https://jenkins.tino.sh/job/k8s./job/master/)
 ![last-commit](https://img.shields.io/github/last-commit/tinoschroeter/k8s.homelab.svg?style=flat)
 [![GitHub Super-Linter](https://github.com/tinoschroeter/k8s.homelab/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/tinoschroeter/k8s.homelab/actions/workflows/linter.yml)
 
-
-## Table of contents
-
-* [Parts](#parts)
-* [3D Print](#3d-print)
-* [PI Setup](#pi-setup)
-* [Kubernetes Setup](#kubernetes-setup)
-* [Client Setup](#client-setup)
-* [ingress](#ingress-nginx)
-* [Cet-Manager](#cet-manager-letsencrypt)
-* [Docker Registry](#docker-registry)
-* [NFS Server](#nfs-server)
-* [logs](#logs)
-* [delete old images on worker node](#delete-old-images-on-worker-node)
+{{ page.update_date }}
 
 ## Parts
 
-- 4 x Raspberry Pi 4 (4 and 8GB)
-- 4 x SanDisk Extreme 64 GB microSDXC Memory Card
-- 3 x SanDisk Ultra Fit USB 3.1 Flash-Laufwerk 256 GB
-- 4 x GeeekPi Raspberry Pi 4 Luefter Kit, Aluminium Kuehlkoerper mit Luefter
-- 4 x DeLock USB-Kabel - USB-C (M) bis 2 pin USB Header
-- 1 x Hutschienen Netzteil 50W 5V 10A ; MeanWell, MDR-60-12
-- 1 x Hutschiene / DIN-Schiene 30cm
+* 4 x Raspberry Pi 4 (4 and 8GB)
+* 4 x SanDisk Extreme 64 GB microSDXC Memory Card
+* 3 x SanDisk Ultra Fit USB 3.1 Flash-Laufwerk 256 GB
+* 4 x GeeekPi Raspberry Pi 4 Luefter Kit, Aluminium Kuehlkoerper mit Luefter
+* 4 x DeLock USB-Kabel - USB-C (M) bis 2 pin USB Header
+* 1 x Hutschienen Netzteil 50W 5V 10A ; MeanWell, MDR-60-12
+* 1 x Hutschiene / DIN-Schiene 30cm
 
 ```mermaid
 graph TD;
@@ -58,12 +44,12 @@ graph TD;
 
 ## 3D Print
 
-- [DIN Rail Stand KIT](https://www.thingiverse.com/thing:3609072)
-- [Raspberry Pi DIN Rail Mount](https://www.thingiverse.com/thing:2659908)
+* [DIN Rail Stand KIT](https://www.thingiverse.com/thing:3609072)
+* [Raspberry Pi DIN Rail Mount](https://www.thingiverse.com/thing:2659908)
 
 ## PI Setup
 
-```shell
+```bash
 add cgroup_enable=memory to /boot/cmdline.txt
 
 # configure timezone
@@ -73,7 +59,7 @@ apt-get install ntp
 
 ## Kubernetes Setup
 
-```shell
+```bash
 # master
 curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" \
 INSTALL_K3S_EXEC=" --disable=traefik" sh -
@@ -85,7 +71,7 @@ cat /var/lib/rancher/k3s/server/node-token
 cat /etc/rancher/k3s/k3s.yaml
 ```
 
-```shell
+```bash
 # agent
 curl -sfL https://get.k3s.io | K3S_URL=https://10.0.1.100:6443 K3S_TOKEN=<token> sh -
 
@@ -93,7 +79,7 @@ curl -sfL https://get.k3s.io | K3S_URL=https://10.0.1.100:6443 K3S_TOKEN=<token>
 
 ## Client Setup
 
-```shell
+```bash
 # copy client config from master
 scp ubuntu@10.0.1.100:/etc/rancher/k3s/k3s.yaml ~/.kube/config
 
@@ -106,7 +92,7 @@ kubectl taint node main-node01 kubernetes=master:NoSchedule
 
 ## ingress (nginx)
 
-```shell
+```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm install nginx-ingress ingress-nginx/ingress-nginx --namespace kube-system \
 --set controller.ingressClass=nginx --set prometheus.create=true
@@ -114,13 +100,13 @@ helm install nginx-ingress ingress-nginx/ingress-nginx --namespace kube-system \
 
 ## Cet-Manager (letsencrypt)
 
-```shell
+```bash
 kubectl create ns cert-manager
 helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --set installCRDs=true
 ```
 
-```shell
+```yaml
 cat letsencrypt-prod.yaml
 
 apiVersion: cert-manager.io/v1
@@ -144,7 +130,7 @@ kubectl apply -n cert-manager -f letsencrypt-prod.yaml
 
 ## NFS Server
 
-```shell
+```bash
 # install NFS on 10.0.1.100 first and export /mnt/data
 apt install nfs-kernel-server
 cat /etc/exports
@@ -175,7 +161,7 @@ spec:
 
 ## Docker Registry
 
-```shell
+```bash
 kubectl create ns docker-registry
 helm repo add twuni https://helm.twun.io
 helm install docker-registry twuni/docker-registry -f values.yaml --namespace docker-registry
@@ -261,9 +247,9 @@ spec:
     secretName: registry-example-com-tls
 ```
 
-```shell
-# Every node in the cluster need this, to login to your docker registry
+## Every node in the cluster need this, to login to your docker registry
 
+```bash
 cat /etc/rancher/k3s/registries.yaml
 
 mirrors:
@@ -277,17 +263,20 @@ configs:
       password: p@$$s0rd # this is the registry password
 ```
 
-
 ## logs
 
-```shell
+```bash
 # logs can be found in /var/log/containers on each host
 ```
 
 ## delete old images on worker node
 
-```shell
+```bash
 k3s crictl rmi --prune
 ```
+
+NOTE:
+das ist ein test
+
 
 [UP^](#pi-cluster)

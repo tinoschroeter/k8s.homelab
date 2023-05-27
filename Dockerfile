@@ -14,8 +14,12 @@ CMD ["node", "index.js"]
 FROM python:3.9.12 AS builder
 WORKDIR /app
 
-RUN pip install mkDocs
-RUN pip install mkdocs-mermaid2-plugin
+RUN pip install mkDocs \ 
+                mkdocs-mermaid2-plugin \
+                mkdocs-callouts \
+                mdx-gh-links \
+                mkdocs-click \
+                mkdocs-macros-plugin
 
 COPY mkdocs.yml .
 COPY docs docs
