@@ -1,4 +1,4 @@
-FROM node:16.11.1-bullseye-slim AS button
+FROM node:18 AS button
 
 RUN apt-get update && apt-get dist-upgrade -y \
 && rm -rf /var/lib/apt/lists/*
@@ -27,7 +27,7 @@ COPY docs docs
 RUN mkdocs build
 
 
-FROM nginx:1.20.2 AS www
+FROM nginx:1.25 AS www
 
 WORKDIR /usr/share/nginx/html
 
