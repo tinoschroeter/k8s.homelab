@@ -1,4 +1,4 @@
-FROM node:18 AS button
+FROM node:20 AS button
 
 RUN apt-get update && apt-get dist-upgrade -y \
 && rm -rf /var/lib/apt/lists/*
@@ -11,15 +11,16 @@ RUN npm install --only=production
 
 CMD ["node", "index.js"]
 
-FROM python:3.9.12 AS builder
+FROM python:3.9.18 AS builder
 WORKDIR /app
 
 RUN pip install mkDocs \ 
-                mkdocs-mermaid2-plugin \
-                mkdocs-callouts \
                 mdx-gh-links \
+                mkdocs-callouts \
                 mkdocs-click \
-                mkdocs-macros-plugin
+                mkdocs-macros-plugin \
+                mkdocs-material \
+                mkdocs-mermaid2-plugin 
 
 COPY mkdocs.yml .
 COPY docs docs
