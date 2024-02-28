@@ -23,13 +23,13 @@
 
 ## Parts
 
-* 4 x Raspberry Pi 4 (4 and 8GB)
-* 4 x SanDisk Extreme 64 GB microSDXC Memory Card
-* 3 x SanDisk Ultra Fit USB 3.1 Flash-Laufwerk 256 GB
-* 4 x GeeekPi Raspberry Pi 4 Luefter Kit, Aluminium Kuehlkoerper mit Luefter
-* 4 x DeLock USB-Kabel - USB-C (M) bis 2 pin USB Header
-* 1 x Hutschienen Netzteil 50W 5V 10A ; MeanWell, MDR-60-12
-* 1 x Hutschiene / DIN-Schiene 30cm
+- 4 x Raspberry Pi 4 (4 and 8GB)
+- 4 x SanDisk Extreme 64 GB microSDXC Memory Card
+- 3 x SanDisk Ultra Fit USB 3.1 Flash-Laufwerk 256 GB
+- 4 x GeeekPi Raspberry Pi 4 Luefter Kit, Aluminium Kuehlkoerper mit Luefter
+- 4 x DeLock USB-Kabel - USB-C (M) bis 2 pin USB Header
+- 1 x Hutschienen Netzteil 50W 5V 10A ; MeanWell, MDR-60-12
+- 1 x Hutschiene / DIN-Schiene 30cm
 
 ```mermaid
 graph TD;
@@ -44,8 +44,8 @@ graph TD;
 
 ## 3D Print
 
-* [DIN Rail Stand KIT](https://www.thingiverse.com/thing:3609072)
-* [Raspberry Pi DIN Rail Mount](https://www.thingiverse.com/thing:2659908)
+- [DIN Rail Stand KIT](https://www.thingiverse.com/thing:3609072)
+- [Raspberry Pi DIN Rail Mount](https://www.thingiverse.com/thing:2659908)
 
 ## PI Setup
 
@@ -90,7 +90,17 @@ sed -i 's/127.0.0.1/10.0.1.100/' ~/.kube/config
 kubectl taint node main-node01 kubernetes=master:NoSchedule
 ```
 
-## ingress (nginx)
+## Cluster Upgrade
+
+[k3s release versions](https://docs.k3s.io/release-notes/v1.29.X)
+
+```bash
+kubectl apply -f https://github.com/rancher/system-upgrade-controller/releases/latest/download/system-upgrade-controller.yaml
+kubectl apply -f k3s-system-upgrade.yaml
+
+```
+
+## Ingress (nginx)
 
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -222,7 +232,7 @@ kind: Ingress
 metadata:
   annotations:
     acme.cert-manager.io/http01-edit-in-place: "true"
-    cert-manager.io/cluster-issuer: letsencrypt-prod 
+    cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-body-size: 1024m
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -274,9 +284,5 @@ configs:
 ```bash
 k3s crictl rmi --prune
 ```
-
-NOTE:
-das ist ein test
-
 
 [UP^](#pi-cluster)
