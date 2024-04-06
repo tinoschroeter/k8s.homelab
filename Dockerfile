@@ -1,7 +1,7 @@
 FROM node:20 AS button
 
 RUN apt-get update && apt-get dist-upgrade -y \
-&& rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -15,12 +15,12 @@ FROM python:3.9.18 AS builder
 WORKDIR /app
 
 RUN pip install mkDocs \ 
-                mdx-gh-links \
-                mkdocs-callouts \
-                mkdocs-click \
-                mkdocs-macros-plugin \
-                mkdocs-material \
-                mkdocs-mermaid2-plugin 
+  mdx-gh-links \
+  mkdocs-callouts \
+  mkdocs-click \
+  mkdocs-macros-plugin \
+  mkdocs-material \
+  mkdocs-mermaid2-plugin 
 
 COPY mkdocs.yml .
 COPY docs docs
