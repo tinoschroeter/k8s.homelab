@@ -285,4 +285,32 @@ configs:
 k3s crictl rmi --prune
 ```
 
+## debug pod
+
+### build image
+
+```sh
+cd debug
+docker build -t debug .
+docker tag debug registry.tino.sh/debug
+docker push registry.tino.sh/debug
+```
+
+### start debugging container
+
+[debug-running-pod](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/)
+
+```sh
+kubectl run debug-pod --image=registry.tino.sh/debug --restart=Never -- sleep 3600
+kubectl exec -it debug-pod -- bash
+kubectl delete pod debug-pod
+```
+
+### start debugging with ephemeral container
+
+```sh
+kubectl debug pod-name-59987fcd5b-sp6x2 -it --image=registry.tino.sh/debug --share-processes --copy-to=debug-pod -- bash
+kubectl delete pod debug-pod
+```
+
 [UP^](#pi-cluster)
