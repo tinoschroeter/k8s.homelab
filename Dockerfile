@@ -1,4 +1,4 @@
-FROM node:20 AS button
+FROM node:22 AS button
 
 RUN apt-get update && apt-get dist-upgrade -y \
   && rm -rf /var/lib/apt/lists/*
