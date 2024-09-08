@@ -1,11 +1,11 @@
 const fs = require("fs");
 const loadavg = "/proc/loadavg";
-const { makeBadge, ValidationError } = require("badge-maker");
+const { makeBadge } = require("badge-maker");
 
 const cpuCount = 4;
 
 const load = () => {
-  return (req, res) => {
+  return (_req, res) => {
     fs.readFile(loadavg, "utf8", (err, data) => {
       if (!err) {
         const result = Math.floor((data.split(" ")[0] / cpuCount) * 100);

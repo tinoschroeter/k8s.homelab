@@ -30,8 +30,8 @@ app.use(
 const cacheMaxAge = process.env.CACHE_MAX_AGE || 120;
 app.use(cache({ cacheMaxAge }));
 
-app.get("/button", (req, res) => res.send("Buttons"));
-app.get("/button/health", (req, res) => res.status(200).end());
+app.get("/button", (_req, res) => res.send("Buttons"));
+app.get("/button/health", (_req, res) => res.status(200).end());
 
 app.get("/button/tempe", temperatur());
 app.get("/button/nettx", tx());

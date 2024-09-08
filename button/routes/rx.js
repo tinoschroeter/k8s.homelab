@@ -1,9 +1,9 @@
 const fs = require("fs");
 const value = "/sys/class/net/eth0/statistics/rx_bytes";
-const { makeBadge, ValidationError } = require("badge-maker");
+const { makeBadge } = require("badge-maker");
 
 const rx = () => {
-  return (req, res) => {
+  return (_req, res) => {
     fs.readFile(value, (err, data) => {
       if (!err) {
         const result = (data / Math.pow(10, 9)).toFixed(1);

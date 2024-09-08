@@ -1,4 +1,4 @@
-const { makeBadge, ValidationError } = require("badge-maker");
+const { makeBadge } = require("badge-maker");
 const k8s = require("@kubernetes/client-node");
 const kc = new k8s.KubeConfig();
 kc.loadFromDefault();
@@ -6,7 +6,7 @@ kc.loadFromDefault();
 const k8sApi = kc.makeApiClient(k8s.CoreV1Api);
 
 const namespaces = () => {
-  return (req, res) => {
+  return (_req, res) => {
     try {
       k8sApi.listNamespace().then((obj) => {
         let howManyNamespaces = 0;

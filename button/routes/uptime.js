@@ -1,9 +1,9 @@
 const fs = require("fs");
 const temp = "/proc/uptime";
-const { makeBadge, ValidationError } = require("badge-maker");
+const { makeBadge } = require("badge-maker");
 
 const uptime = () => {
-  return (req, res) => {
+  return (_req, res) => {
     fs.readFile(temp, 'utf8', (err, data) => {
       if (!err) {
         const result = Math.floor(data.split(' ')[0] / 60 / 60 / 24);

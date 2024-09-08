@@ -1,6 +1,6 @@
 const fs = require("fs");
 const temp = "/sys/class/thermal/thermal_zone0/temp";
-const { makeBadge, ValidationError } = require("badge-maker");
+const { makeBadge } = require("badge-maker");
 
 const getColor = (temperatur) => {
   if (temperatur > 77) {
@@ -13,7 +13,7 @@ const getColor = (temperatur) => {
 };
 
 const temperatur = () => {
-  return (req, res) => {
+  return (_req, res) => {
     fs.readFile(temp, (err, data) => {
       if (!err) {
         const result = (data / 1000).toFixed(1);

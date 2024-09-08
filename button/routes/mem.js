@@ -1,6 +1,6 @@
 const fs = require("fs");
 const meminfo = "/proc/meminfo";
-const { makeBadge, ValidationError } = require("badge-maker");
+const { makeBadge } = require("badge-maker");
 
 const mem = () => {
   return (req, res) => {
