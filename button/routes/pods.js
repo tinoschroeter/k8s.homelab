@@ -10,7 +10,7 @@ const pods = () => {
     try {
       k8sApi.listPodForAllNamespaces().then((obj) => {
         let howManyPods = 0;
-        howManyPods = obj.body.items.filter(
+        howManyPods = obj.items.filter(
           (item) => item.status.phase === "Running"
         ).length;
         console.log("Pods count: ", howManyPods);

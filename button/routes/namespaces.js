@@ -10,7 +10,7 @@ const namespaces = () => {
     try {
       k8sApi.listNamespace().then((obj) => {
         let howManyNamespaces = 0;
-        howManyNamespaces = obj.body.items.length;
+        howManyNamespaces = obj.items.length;
         console.log("Namespaces: ", howManyNamespaces);
 
         if (!howManyNamespaces) howManyNamespaces = "error";
