@@ -1,7 +1,4 @@
-FROM node:22 AS button
-
-RUN apt-get update && apt-get dist-upgrade -y \
-  && rm -rf /var/lib/apt/lists/*
+FROM node:24 AS button
 
 WORKDIR /app
 
