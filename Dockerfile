@@ -8,7 +8,7 @@ RUN npm install --only=production
 
 CMD ["node", "index.js"]
 
-FROM python:3.9.18 AS builder
+FROM python:3.10.21 AS builder
 WORKDIR /app
 
 RUN pip install mkDocs \ 
@@ -25,7 +25,7 @@ COPY docs docs
 RUN mkdocs build
 
 
-FROM nginx:1.25 AS www
+FROM nginx:1.31 AS www
 
 WORKDIR /usr/share/nginx/html
 
